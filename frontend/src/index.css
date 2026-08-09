@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f6f7f5;
+  --color-surface: #ffffff;
+  --color-ink: #1a1d21;
+  --color-muted: #66707c;
+  --color-line: #e4e7e2;
+  --color-radar: #0b7a6b;      /* single brand accent */
+  --color-radar-soft: #e3f1ee;
+  --color-hot: #d64b12;        /* < 1h */
+  --color-fresh: #1f8a4c;      /* < 6h */
+  --color-warm: #b7791f;       /* < 24h */
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+body { @apply bg-paper text-ink font-sans antialiased; }
+
+.pulse-dot { position: relative; }
+.pulse-dot::after {
+  content: ""; position: absolute; inset: -3px; border-radius: 9999px;
+  border: 1.5px solid currentColor; opacity: 0; animation: radar 1.8s ease-out infinite;
+}
+@keyframes radar { 0% { transform: scale(0.6); opacity: .7; } 100% { transform: scale(1.9); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .pulse-dot::after { animation: none; } }
+
+.btn-primary, .btn-ghost {
+  @apply inline-flex items-center gap-1 rounded-md px-2.5 py-1 text-xs font-medium transition-colors cursor-pointer border;
+}
+.btn-primary { @apply bg-radar text-white border-radar hover:opacity-90; }
+.btn-ghost { @apply bg-surface text-ink border-line hover:bg-paper disabled:opacity-40 disabled:cursor-default; }
+.btn-primary:focus-visible, .btn-ghost:focus-visible { outline: 2px solid var(--color-radar); outline-offset: 2px; }
+input:focus-visible, select:focus-visible { outline: 2px solid var(--color-radar); outline-offset: 1px; }

@@ -1,0 +1,1 @@
+{"root":["./src/App.tsx","./src/api.ts","./src/main.tsx","./src/types.ts","./src/components/CompaniesPage.tsx","./src/components/FilterSidebar.tsx","./src/components/GoalBar.tsx","./src/components/JobDetail.tsx","./src/components/JobsTable.tsx","./src/components/SummaryCards.tsx"],"version":"5.9.3"}
